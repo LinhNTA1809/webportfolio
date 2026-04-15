@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="WebPortfolio.html" class="close-btn">×</a>
+
+        <div class="content about-page">
+            <div class="tabs">
+                <button onclick="showImage(1)" style="color: white;">Image 1</button>
+                <button onclick="showImage(2)">Image 2</button>
+            </div>
+            <div class="image-box">
+                <img id="mainImage" src="about1.png" alt="image">
+            </div>
+        </div>
+    </div>
+
+<script>
+    function showImage(num) {
+    	const img = document.getElementById("mainImage");
+
+    	img.style.opacity = 0;
+
+    	setTimeout(() => {
+            img.src = (num === 1) ? "about1.png" : "about2.png";
+            img.style.opacity = 1;
+   	}, 200);
+    }
+</script>
+</body>
+</html>
