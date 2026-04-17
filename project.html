@@ -6,7 +6,7 @@
     <title>Project</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="project-page">
     <div class="container">
         <div class="navbar">
             <ul class="menu">
@@ -33,39 +33,50 @@
 </div>
 
 <script>
-let currentSlide = 1;
-const slides = document.querySelectorAll(".slide");
+document.addEventListener("DOMContentLoaded", () => {
 
-function updateSlides() {
-    slides.forEach((slide, i) => {
-        slide.classList.remove("active", "left", "right");
+    let currentSlide = 1;
+    const slides = document.querySelectorAll(".slide");
 
-        if(i === currentSlide) {
-            slide.classList.add("active");
-        } else if(i === (currentSlide - 1 + slides.length) % slides.length) {
-            slide.classList.add("left");
-        } else if(i === (currentSlide + 1) % slides.length) {
-            slide.classList.add("right");
-        }
-    });
-}
+    function updateSlides() {
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active", "left", "right");
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
+            if(i === currentSlide) {
+                slide.classList.add("active");
+            } else if(i === (currentSlide - 1 + slides.length) % slides.length) {
+                slide.classList.add("left");
+            } else if(i === (currentSlide + 1) % slides.length) {
+                slide.classList.add("right");
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlides();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlides();
+    }
+
+    window.nextSlide = nextSlide;
+    window.prevSlide = prevSlide;
+
     updateSlides();
-}
 
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateSlides();
-}
+    slides.forEach((slide) => {
+      slide.addEventListener("click", () => {
+        const imgSrc = slide.getAttribute("src");
 
-updateSlides();
+        const comicSrc = imgSrc.replace("project", "comic");
 
-slides.forEach(slide => {
-    slide.addEventListener("click", () => {
-        window.location.href = "comics.html";
+        window.location.href = `comics.html?img=${comicSrc}`;
+      });
     });
+
 });
 </script>
 </body>

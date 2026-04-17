@@ -115,7 +115,7 @@ body {
     color: white;
     text-decoration: none;
 
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -173,6 +173,23 @@ body {
 }
 
 /* project.html */
+.project-page .container {
+    position: relative;
+}
+
+.project-page .container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+.project-page .container > * {
+    position: relative;
+    z-index: 1;
+}
+
 .project-slider {
     position: relative;
     width: 100%;

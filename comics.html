@@ -9,9 +9,24 @@
 <body>
     <div class="container">
 	<div class="comic-page">
-            <a href="WebPortfolio.html" class="close-btn">×</a>
-            <img src="comic.png" class="comic-img" alt="comic">
+            <a href="project.html" class="close-btn">×</a>
+            <img id="comicImage" class="comic-img" alt="comic">
     	</div>
     </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const img = params.get("img");
+
+    const comicImg = document.getElementById("comicImage");
+
+    if (img) {
+        comicImg.src = img;
+    } else {
+        comicImg.src = "comic1.png";
+    }
+});
+</script>
 </body>
 </html>
